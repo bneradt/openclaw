@@ -22,6 +22,14 @@ beforeEach(() => {
 });
 
 describe("pi embedded model e2e smoke", () => {
+  it("builds an openai-codex forward-compat fallback for gpt-5.4", () => {
+    mockOpenAICodexTemplateModel();
+
+    const result = resolveModel("openai-codex", "gpt-5.4", "/tmp/agent");
+    expect(result.error).toBeUndefined();
+    expect(result.model).toMatchObject(buildOpenAICodexForwardCompatExpectation("gpt-5.4"));
+  });
+
   it("attaches provider ids and provider-level baseUrl for inline models", () => {
     const providers = {
       custom: {

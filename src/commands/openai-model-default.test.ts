@@ -204,6 +204,10 @@ describe("applyOpenAICodexModelDefault", () => {
     expectPrimaryModelChanged(applied, OPENAI_CODEX_DEFAULT_MODEL);
   });
 
+  it("uses the gpt-5.4 Codex default", () => {
+    expect(OPENAI_CODEX_DEFAULT_MODEL).toBe("openai-codex/gpt-5.4");
+  });
+
   it("sets openai-codex default when model is openai/*", () => {
     const cfg: OpenClawConfig = {
       agents: { defaults: { model: { primary: OPENAI_DEFAULT_MODEL } } },
